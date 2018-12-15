@@ -6,17 +6,17 @@ import ResultList from './ResultList';
 class App extends React.Component {
     state = { results: [] };
 
+
+
     
-    onTermSubmit = term => {
+    onTermSubmit = async term => {
         const url = `https://en.wikipedia.org/w/api.php?action=opensearch&search=${term}&origin=*&format=json`;
 
-        fetch(url)
+        await fetch(url)
             .then( res => {
-                console.log(res);
                 return res.json();
             })
             .then(parsedJson => {
-                console.log(JSON.stringify(parsedJson));
                 this.setState({ results: parsedJson });
                 console.log(this.state);
             });              
@@ -26,6 +26,7 @@ class App extends React.Component {
         return (
             <div className="ui container">
                 <SearchBar onFormSubmit={this.onTermSubmit} />
+                <ResultList />
             </div>
         );
     }
