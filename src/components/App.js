@@ -26,7 +26,7 @@ class App extends React.Component {
         return (
             <div className="ui container">
                 <SearchBar onFormSubmit={this.onTermSubmit} />
-                <ResultList />
+                <ResultList results={this.state.results}/>
             </div>
         );
     }
