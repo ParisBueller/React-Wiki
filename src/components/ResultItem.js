@@ -5,8 +5,8 @@ const ResultItem = ({ result }) => {
             <div className="item">
                <i className="wikipedia w icon"></i>
                <div className="content">
-                    <a className="header">{result[3]}</a>
-                    <div className="description">{result[2]}</div>
+                    <a href={result.url} className="header">{result.title}</a>
+                    <div className="description">{result.description}</div>
                </div>
             </div>
         );
