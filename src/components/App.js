@@ -7,7 +7,7 @@ class App extends React.Component {
     state = { results: [] };
 
     onTermSubmit = async term => {
-        const url = `https://en.wikipedia.org/w/api.php?action=opensearch&search=${term}&origin=*&format=json`;
+        const url = `https://en.wikipedia.org/w/api.php?action=opensearch&search=${term}&origin=*&format=json&limit=20`;
 
         await fetch(url)
             .then( res => {
@@ -18,10 +18,13 @@ class App extends React.Component {
                const titleArray = parsedJson[1];
                const descriptionArray = parsedJson[2];
                const urlArray = parsedJson[3];
+               if(term) {
                for(let i=0; i < titleArray.length; i++) {
                 resultsArray.push({title:titleArray[i], description:descriptionArray[i], url:urlArray[i]});
-               }
+                }
+            } 
                this.setState({ results: resultsArray });
+               
             });              
     }
      

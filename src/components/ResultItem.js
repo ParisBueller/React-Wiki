@@ -1,6 +1,7 @@
 import React from 'react';
 
 const ResultItem = ({ result }) => {
+
         return (
             <div className="item">
                <i className="wikipedia w icon"></i>
